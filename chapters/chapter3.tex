@@ -1,0 +1,36 @@
+\chapter{Quantization and Compression for Channel State Information}
+\label{chap:3}
+\section{Overview}
+\label{sec:ch3overview}
+\section{Chapter Summary}
+\label{sec:ch3summary}
+
+
+\begin{figure}[tbh!]
+    \centering
+    \input{plots/cloudran/quantizer_llrs_C1_Q8_Y1024.pgf}
+    \caption{\gls{SNR} dependent quantizer \gls{LLR} representatives for $\re$ / $\im$ \gls{QPSK} components with $I_q=8$, $N_Q=1024$.}
+    \label{fig:cloudran:quantizer:llrs}
+\end{figure}
+
+This \reffig{fig:cloudran:quantizer:llrs} is an example of a TikZ plot.
+
+
+
+\begin{figure}[tbh!]
+    \centering
+    \includeinkscape[width=\textwidth]{hier_multicarrier_sync}
+    \caption{Internals of the \textit{XFDMSync} \textit{Multicarrier Sync} hierarchical flowgraph.}
+    \label{fig:fg:sync}
+\end{figure}
+
+% In \ref{fig:fg:sync} you can see how one may include pictures that are modified in Inkscape. Try to include them this way to adjust fonts etc.
+
+% \begin{figure}[htb]
+%     \centering
+%     \input{schematics/fundamentals/system_channel_model_time_domain_2x2.pgf}
+%     \caption{Time domain $2\times 2$ channel model example flowgraph}\label{fig:flowgraph:channel}
+% \end{figure}
+
+Finally, \reffig{fig:flowgraph:channel} is a simple TikZ picture.
+However, keep in mind that the math labels are taken from your definition file. You want to stay in sync.

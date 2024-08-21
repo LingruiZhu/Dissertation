@@ -1,0 +1,47 @@
+﻿\begin{tikzpicture}[auto,node distance=3cm and .9cm,>=latex']
+\tikzstyle{block} = [draw, rectangle, minimum height=2em, minimum width=2em, align=center, inner sep=2pt]
+
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+
+\tikzset{fgadd/.style={path picture={ 
+  \draw[black]
+(path picture bounding box.east) -- (path picture bounding box.west) (path picture bounding box.south) -- (path picture bounding box.north);
+}}
+}
+
+\node [input] (src0) {};
+\node [input,below=of src0] (src1) {};
+
+\node [block, right=of src0] (channel00) {$\matChannelTaps_{0,0}$};
+\node [block, below=.1 of channel00] (channel01) {$\matChannelTaps_{0, 1}$};
+\node [block, right=of src1] (channel11) {$\matChannelTaps_{1,1}$};
+\node [block, above=.1 of channel11] (channel10) {$\matChannelTaps_{1,0}$};
+
+
+
+\node [draw,circle,fgadd, right=of channel00] (addnoise0) {};
+\node [draw,circle,fgadd, right=of channel11] (addnoise1) {};
+\node [above=.4 of addnoise0] (noise0) {$\vecNoise_0$};
+\node [above=.4 of addnoise1] (noise1) {$\vecNoise_1$};
+
+\node [output, right=of addnoise0] (snk0) {};
+\node [output, below=of snk0] (snk1) {};
+
+
+\draw [->] (src0) -- node [above left]{$\vecBaseband_0$}  (channel00);
+\draw [->] (src0) --  (channel01);
+\draw [->] (src1) -- node [above left]{$\vecBaseband_1$}  (channel10);
+\draw [->] (src1) --  (channel11);
+
+\draw [->] (channel00) --  (addnoise0);
+\draw [->] (channel10) --  (addnoise0);
+\draw [->] (channel01) --  (addnoise1);
+\draw [->] (channel11) --  (addnoise1);
+
+\draw [->] (noise0) -- (addnoise0);
+\draw [->] (noise1) -- (addnoise1);
+\draw [->] (addnoise0) -- node [above right]{$\vecBasebandR_0$}  (snk0);
+\draw [->] (addnoise1) -- node [above right]{$\vecBasebandR_1$}  (snk1);
+
+\end{tikzpicture}

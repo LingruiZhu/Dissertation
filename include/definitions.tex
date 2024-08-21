@@ -1,0 +1,482 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Macro definitions for mathematical symbols and functions                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% General Stuff
+\newcommand{\D}{\displaystyle}
+\newcommand{\T}{\textstyle}
+
+% C++ typesetting
+\newcommand{\Cpp}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny\bf +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny\bf +}}
+\newcommand{\Arikan}{Ar{\i}kan}
+
+% Reference shortcuts
+\newcommand{\reffig}[1]{Fig.~\ref{#1}}
+\newcommand{\reftable}[1]{Tab.~\ref{#1}}
+\newcommand{\refapp}[1]{Appendix~\ref{#1}}
+\newcommand{\refchap}[1]{Chapter~\ref{#1}}
+\newcommand{\refsec}[1]{Sec.~\ref{#1}}
+
+% Symbol modifiers
+\newcommand{\softValue}[1]{\tilde{#1}}
+\newcommand{\hardValue}[1]{\hat{#1}}
+
+% Indices
+\newcommand{\idxC}{\ensuremath{k}}      % Carrier index
+\newcommand{\idxT}{\ensuremath{t}}      % Continuous time index
+\newcommand{\idxTau}{\ensuremath{\tau}} % Some continuous time
+\newcommand{\idxN}{\ensuremath{n}}      % Discrete time index
+\newcommand{\idxL}{\ensuremath{\ell}}   % channel length index
+\newcommand{\idxA}{\ensuremath{\nu}}    % Layer index
+
+\newcommand{\idxSa}{\ensuremath{\iota}}  % Arbitrary Index
+\newcommand{\idxSb}{\ensuremath{\kappa}} % Arbitrary Index
+\newcommand{\idxSc}{\ensuremath{\rho}}   % Arbitrary Index
+
+% Bracket Definitions
+\newcommand{\lpa}{\ensuremath\left(}
+\newcommand{\rpa}{\ensuremath\right)}
+\newcommand{\lbb}{\ensuremath\left[}
+\newcommand{\rbb}{\ensuremath\right]}
+\newcommand{\lcb}{\ensuremath\left\{}
+\newcommand{\rcb}{\ensuremath\right\}}
+
+% Misc. definitions
+\newcommand{\vala}{\ensuremath \zeta} % Arbitrary value / variable
+\newcommand{\valb}{\ensuremath \upsilon} % Another variable
+\newcommand{\const}{\ensuremath c} % A constant value
+\newcommand{\mI}[1][]{\ensuremath \mathbf{I}_{#1}} % identitiy matrix
+\newcommand{\mO}[1][]{\ensuremath \mathbf{0}_{#1}} % zero matrix}
+\newcommand{\no}{\ensuremath N} % Some number of terms / elements, etc...
+\newcommand{\func}[2][]{\ensuremath f_{#1}\negthinspace\lpa#2\rpa} % Arbitrary function
+\newcommand{\besselI}[1][\cdot]{\ensuremath I_0\negthinspace\lpa#1\rpa} % Modified Bessel function first kind, zeroth order
+\newcommand{\noce}[1][\idxC]{\ensuremath \lambda_{#1}} %Non-Centrality of the chi^2-distribution
+
+\newcommand{\mF}[1][\nC]{\ensuremath \mathbf{F}_{\nC}} % FFT Matrix
+\newcommand{\su}{\ensuremath{u}} % Arbitrary element
+\newcommand{\vu}{\ensuremath \mathbf{\su}} %Arbitrary vector
+
+% Optimization
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\newcommand{\lvar}{\ensuremath{\lambda}}
+\newcommand{\lagrf}{\ensuremath{J}}
+\newcommand{\lagr}[1][\lvar]{\ensuremath \lagrf\negthinspace\lpa#1\rpa}
+\newcommand{\lkup}[1][\zeta]{\ensuremath L\negthinspace\lpa#1\rpa}
+
+% Statistics
+\DeclareMathOperator{\p}{p}
+\DeclareMathOperator{\pp}{P}
+\DeclareMathOperator{\e}{e}
+\DeclareMathOperator{\E}{E}
+\newcommand{\Prob}[1]{\ensuremath  \pp\negthinspace\lpa#1\rpa} % probability
+\newcommand{\cProb}[2]{\ensuremath  \pp\negthinspace\lpa#1\vert#2\rpa} % conditional probability
+
+\newcommand{\pdf}[2][]{\ensuremath \p_{#1}\negthinspace\lpa#2\rpa} % probability density function
+\newcommand{\cpdf}[3][]{\ensuremath \p_{#1}\negthinspace\lpa#2\vert#3\rpa} % conditioned pdf
+\newcommand{\cdf}[2][]{\ensuremath \pp_{#1}\negthinspace\lpa#2\rpa} % cumulative density Function
+
+\newcommand{\epc}[2][]{\ensuremath \E_{#1}\negthinspace\lcb#2\rcb} % Expectation of a random variable
+\newcommand{\std}[1][]{\ensuremath \sigma_{#1}} % Standard deviation 
+\newcommand{\mean}[1][]{\ensuremath \mu_{#1}} % Mean
+
+\newcommand{\CFun}[1][]{\ensuremath \Phi_{#1}\!\lpa\omega\rpa}
+
+\newcommand{\dprob}[1][\text{out}]{\ensuremath \pp_{#1}} 
+
+\newcommand{\corr}{\ensuremath r} % Correlation
+
+% Prob. distributions
+\newcommand{\rnormpdf}[1][0,1]{\ensuremath\mathcal{N}\negthinspace\lpa#1\rpa}
+\newcommand{\cnormpdf}[1][0,1]{\ensuremath\mathcal{N}_{\text{C}}\negthinspace\lpa#1\rpa}
+\newcommand{\ierf}[1][\cdot]{\ensuremath\mathrm{erf}^{-1}\lpa#1\rpa}
+\newcommand{\erf}[1][\cdot]{\ensuremath\mathrm{erf}\lpa#1\rpa}
+\newcommand{\erfc}[1][\cdot]{\ensuremath\mathrm{erfc}\lpa#1\rpa}
+\newcommand{\Qtail}[1][\cdot]{\ensuremath Q\negthinspace\lpa#1\rpa}
+\newcommand{\Qtailinv}[1][\cdot]{\ensuremath Q^{-1}\negthinspace\lpa#1\rpa}
+
+% Approximation
+\newcommand{\aProx}[1][]{\ensuremath \mathfrak{a}_{#1}}
+\newcommand{\bProx}[1][]{\ensuremath \mathfrak{b}_{#1}}
+
+% Operators
+\DeclareMathOperator{\dg}{diag}
+\DeclareMathOperator{\lowtri}{tril}
+\DeclareMathOperator{\vect}{vec}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\md}{mod}
+\newcommand{\diag}[1][\cdot]{\ensuremath\dg\lpa#1\rpa}
+\newcommand{\tril}[1][\cdot]{\ensuremath\lowtri\lpa#1\rpa}
+\newcommand{\abs}[1][\cdot]{\ensuremath\left\lvert#1\right\rvert}
+\newcommand{\norm}[1][\cdot]{\ensuremath\left\lVert#1\right\rVert}
+\newcommand{\Tr}[1][\cdot]{\ensuremath \trace\lcb#1\rcb}
+\newcommand{\re}[1][\cdot]{\ensuremath \mathfrak{Re}\negthinspace\lcb#1\rcb} % real part
+\newcommand{\im}[1][\cdot]{\ensuremath \mathfrak{Im}\negthinspace\lcb#1\rcb} % imaginary part
+\newcommand{\sign}[1][\cdot]{\ensuremath \mathrm{sgn}\lcb#1\rcb} % Sign of a scalar
+
+% Sets 
+\newcommand{\eA}{\ensuremath{a}} % Element of set A
+\newcommand{\setA}[1][]{\ensuremath\mathcal{\MakeUppercase{\eA}}_{#1}} % Set of all possible symbol alphabet elements
+\newcommand{\defA}[1][]{\ensuremath\lcb\eA_1,\dotsc,\eA_{\M_{#1}}\rcb} % Definition of set A
+
+\newcommand{\fmap}[2][]{\ensuremath\mathcal{M}_{#1}\negthinspace\lpa#2\rpa} % Mapping function
+\newcommand{\deffmap}[1][]{\ensuremath\mathcal{M}_{#1}:\mathrm{GF}\negthinspace\lpa2\rpa^{\ldM[#1]\times 1}\mapsto\setA[#1]}
+
+\newcommand{\setD}[1][]{\ensuremath{\mathcal{D}_{#1}}} % N-dimensional set of symbol vectors
+\newcommand{\defD}[1][0]{\ensuremath\lcb\vdwir[\idxC]\,\vert\,\sd_{\idxC,\idxA}\in\ifthenelse{#1>0}{\setA[\idxC,\idxA]}{\setA}\quad\forall\,\idxA=1,\dotsc,2\nA\rcb} % Definition of set D
+\newcommand{\defdmap}[1][]{\ensuremath\mathcal{M}_{#1}:\mathrm{GF}\negthinspace\lpa2\rpa^{\nd[#1]\times 1}\mapsto\setD[#1]}
+
+\newcommand{\setU}{\ensuremath\mathcal{U}} % Set of active Users
+
+\newcommand{\setPi}{\ensuremath\mathcal{I}} % Set of indexes (e.g., for interleavers)
+\newcommand{\setS}[1][]{\ensuremath\mathcal{S}_{#1}} % Set of subcarriers assigned to one user
+
+\newcommand{\setR}{\ensuremath\mathcal{R}_{\text{C}}} % Set of applicable code rates 
+\newcommand{\setL}{\ensuremath\mathcal{L}} % Set of rate-power points
+
+\newcommand{\domr}{\ensuremath\mathbb{R}} % real domain
+\newcommand{\domc}{\ensuremath\mathbb{C}} % complex domain
+
+% Information theory
+\newcommand{\capa}{\ensuremath C} % Channel capacity
+\newcommand{\acap}{\ensuremath \hat{C}} % Channel capacity approximation
+\newcommand{\gap}[1][]{\ensuremath \gamma_{#1}} % Capacity gap for M-QAM modulations
+\newcommand{\ety}[1][x]{\ensuremath h\negthinspace\lpa#1\rpa} % differential Entropy of a signal
+\newcommand{\lety}[1][x]{\ensuremath \tilde{h}\negthinspace\lpa#1\rpa} % Lower bound of the entropy of a signal
+\newcommand{\eety}[1][x]{\ensuremath \hat{h}\negthinspace\lpa#1\rpa} % Approximate entropy of a signal
+\newcommand{\emi}{\ensuremath I} % Extrinsic Mutual information
+
+% Rates and Users
+\newcommand{\rate}{\ensuremath R} % A rate
+\newcommand{\ru}[1][]{\ensuremath r_{#1}}
+\newcommand{\vru}{\ensuremath \mathbf{r}}
+\newcommand{\srate}{\ensuremath \rate_{\text{ov}}}
+
+% Error rates
+\newcommand{\fer}[1][f]{\ensuremath \pp_{\text{#1}}\negthinspace}
+\newcommand{\ber}[1][b]{\ensuremath \pp_{\text{#1}}\negthinspace}
+\newcommand{\ser}[1][s]{\ensuremath \pp_{\text{#1}}\negthinspace}
+
+% System Model
+%% Constants
+\newcommand{\nT}{\ensuremath N_{\text{T}}} % Number of transmit antennas
+\newcommand{\nA}{\ensuremath N_{\text{L}}} % Number of layers
+\newcommand{\nTst}{\ensuremath N_{\text{ST}}} % Number of time slots for STP
+\newcommand{\nR}{\ensuremath N_{\text{R}}} % Number of receive antennas
+\newcommand{\nU}{\ensuremath N_{\text{U}}} % Number of users
+\newcommand{\nC}{\ensuremath N_{\text{C}}} % Number of carriers
+\newcommand{\nCP}{\ensuremath N_{\text{CP}}} % Guard Interval Length
+\newcommand{\nS}{\ensuremath N_{\text{S}}} % Length of one OFDM Symbol
+\newcommand{\nG}{\ensuremath N_{\text{G}}} % Number of carriers in a chunk
+\newcommand{\nL}{\ensuremath N_{\text{F}}} % Number of channel taps
+\newcommand{\nCor}{\ensuremath N_{\text{Cor}}} % Number of correlated samples
+\newcommand{\nCW}{\ensuremath N_{\text{W}}} % Size of the correlation window
+
+%% Code and BICM Description
+\newcommand{\rc}[1][]{\ensuremath \ifthenelse{\equal{#1}{}}{R_{\text{C}}}{R_{\text{C},#1}}} % Code rate
+\newcommand{\vrc}[1][]{\ensuremath \ifthenelse{\equal{#1}{}}{\mathbf{r}_{\text{C}}}{\mathbf{r}_{\text{C},#1}}} % Code rate vector
+\newcommand{\rce}[1][]{\ensuremath \ifthenelse{\equal{#1}{}}{\hat{R}_{\text{C}}}{\hat{R}_{\text{C},#1}}} % Code rate estimate
+
+\newcommand{\symBaseband}{s}
+\newcommand{\symBasebandR}{\softValue{\symBaseband}}
+\newcommand{\vecBaseband}{\ensuremath \bm{\symBaseband}}
+\newcommand{\vecBasebandR}{\ensuremath \bm{\symBasebandR}}
+
+\newcommand{\symNoise}{n}
+\newcommand{\vecNoise}{\ensuremath \bm{\symNoise}}
+
+\newcommand{\symChannelTap}{h}
+\newcommand{\matChannelTaps}{\ensuremath \bm{\MakeUppercase{\symChannelTap}}}
+
+\newcommand{\drc}[1][]{\ensuremath \ifthenelse{\equal{#1}{}}{R'_{\text{C}}}{R'_{\text{C},#1}}} % Design Code rate
+\newcommand{\drce}{\ensuremath \Delta_{R'_\text{C}}} % Design Code rate error
+
+\newcommand{\lc}{\ensuremath L_{\text{C}}} % Constraint length of channel codes
+\newcommand{\mr}{\ensuremath m_{\text{R}}} % memory of channel codes
+\newcommand{\rp}{\ensuremath N_{\text{P}}} % Puncturing period
+\newcommand{\rpun}{\ensuremath R_{\text{P}}} % Puncturing rate 
+\newcommand{\rdop}{\ensuremath R_{\text{D}}} % Doping Rate
+\newcommand{\rep}[1][]{\ensuremath N_{\text{rep} #1}} % Repetion factor
+\newcommand{\mrep}{\ensuremath N_{\text{rep,max}}} % Maximum Repetion factor
+\newcommand{\cit}{\ensuremath L_{\text{I}}} % Number of Decoder Iterations
+\newcommand{\linf}{\ensuremath \alpha} % Linear combination factor
+\newcommand{\tra}{\ensuremath T} % Tranfer characteristic
+\newcommand{\iradis}{\ensuremath \Delta_{\tra}} % Distance of transfer characteristics
+
+\newcommand{\rcgap}{\ensuremath \epsilon} % Code Rate Design Gap
+
+\newcommand{\fint}[1][\cdot]{\ensuremath \pi\negthinspace\lpa#1\rpa} % Interleaver function
+\newcommand{\ifint}[1][\cdot]{\ensuremath \pi^{-1}\negthinspace\lpa#1\rpa} % Interleaver function
+
+\newcommand{\M}{\ensuremath{M}} % Number of symbols in an alphabet
+\newcommand{\vM}{\ensuremath \mathbf{\MakeLowercase{\M}}} % Vector of M for multiple layers
+\newcommand{\ldM}[1][]{\ensuremath \log_2\lpa\M_{#1}\rpa} % Number of bits in a symbol
+
+\newcommand{\bl}{\ensuremath b} % Bit label
+
+\newcommand{\llr}{\ensuremath L} % LLR value
+\newcommand{\fllr}[2][]{\llr_{#1}\negthinspace\lpa#2\rpa} % L-value shorthand
+\newcommand{\fllra}[1]{\fllr[\text{A}]{#1}} % A-Priori L-value
+\newcommand{\fllre}[1]{\fllr[\text{E}]{#1}} % Extrinsic L-value
+\newcommand{\fllrc}[1]{\fllr[\text{C}]{#1}} % Channel L-value
+
+%% Vector & Matrix
+\newcommand{\sz}{\ensuremath{z}} % Element of signal after filtering
+\newcommand{\vz}{\ensuremath\mathbf{\sz}} % Vector
+
+\newcommand{\sW}{\ensuremath{w}} % Element of the receiver filter matrix
+\newcommand{\vW}{\ensuremath\mathbf{\sW}} % Vector of the receive filter matrix
+\newcommand{\mW}{\ensuremath\mathbf{\MakeUppercase{\sW}}} % Receive Filter matrix
+
+\newcommand{\sy}{\ensuremath{y}} % Element of the receive vector
+\newcommand{\vy}{\ensuremath\mathbf{\sy}} % Receive vector
+
+\newcommand{\sSy}{\ensuremath{\Theta}} % Element of the system matrix
+\newcommand{\vSy}{\ensuremath\mathbf{\sSy}} % Column of the system matrix
+\newcommand{\mSy}{\ensuremath\mathbf{\MakeUppercase{\sSy}}} % System matrix 
+
+\newcommand{\sSye}{\ensuremath{\tilde{\Theta}}} % Element of the estimated system matrix
+\newcommand{\vSye}{\ensuremath\mathbf{\sSye}} % Column of the estimated system matrix
+\newcommand{\mSye}{\ensuremath\mathbf{\MakeUppercase{\sSye}}} % Estimated System matrix 
+
+\newcommand{\sH}{\ensuremath{h}} % Element of the channel matrix
+\newcommand{\vH}{\ensuremath\mathbf{\sH}} % Column of the channel matrix
+\newcommand{\mH}{\ensuremath\mathbf{\MakeUppercase{\sH}}} % Channel Matrix
+
+\newcommand{\sHe}{\ensuremath{\tilde{h}}} % Element of the estimated channel matrix
+\newcommand{\vHe}{\ensuremath\mathbf{\sHe}} % Column of the estimated channel matrix
+\newcommand{\mHe}{\ensuremath\mathbf{\MakeUppercase{\sHe}}} % Estimated Channel Matrix
+
+\newcommand{\sHd}{\ensuremath{\Delta}} % Element of the error channel matrix
+\newcommand{\vHd}{\ensuremath\mathbf{\sHd}} % Column of the errror channel matrix
+\newcommand{\mHd}{\ensuremath\mathbf{\MakeUppercase{\sHd}}} % Error Channel Matrix
+
+\newcommand{\sG}{\ensuremath{g}} % Element of the generator matrix
+\newcommand{\vG}{\ensuremath\mathbf{\sG}} % Column of the generator matrix
+\newcommand{\mG}{\ensuremath\mathbf{\MakeUppercase{\sG}}} % Generator Matrix
+
+\newcommand{\sPrec}{\ensuremath{\xi}} % Non-linear precoding vector element
+\newcommand{\vPrec}{\ensuremath\boldsymbol{\sPrec}} % Non-linear precoding vector
+\newcommand{\mPre}{\ensuremath\mathbf{F}} % Forward Precoding matrix
+\newcommand{\mBPre}{\ensuremath\mathbf{B}} % Feedback Precoding matrix
+\newcommand{\sNorm}{\ensuremath\beta} % Power normalization factor
+
+\newcommand{\sP}{\ensuremath{p}} % Element of the power matrix
+\newcommand{\vP}{\ensuremath\mathbf{\sP}} % Column of the power matrix
+\newcommand{\mP}{\ensuremath\mathbf{\MakeUppercase{\sP}}} % Power Matrix
+
+\newcommand{\sx}{\ensuremath{x}} % Element of the transmit vector
+\newcommand{\vx}{\ensuremath\mathbf{\sx}} % Transmit vector
+
+\newcommand{\sd}{\ensuremath{d}} % Element of the symbol vector
+\newcommand{\vd}{\ensuremath\mathbf{\sd}} % Symbol vector
+\newcommand{\mD}{\ensuremath\mathbf{\MakeUppercase{\sd}}} % Transmit Symbol matrix
+\newcommand{\nd}[1][\idxC]{\ensuremath N_{\vd,#1}}
+
+\newcommand{\sco}{\ensuremath{c}} % Element of the code bit vector
+\newcommand{\vc}{\ensuremath\mathbf{c}} % Transmit vector
+\newcommand{\nc}{\ensuremath N_{\vc}} % Number of code bits
+
+
+%\newcommand{\sb}{\ensuremath{b}} % Element of the information bit vector
+\newcommand{\vb}{\ensuremath\mathbf{b}} % Transmit vector
+\newcommand{\nb}{\ensuremath N_{\vb}} % Number of information bits
+
+\newcommand{\sbe}{\ensuremath\hat{b}} % estimated bit
+\newcommand{\vbe}{\ensuremath\hat{\vb}} % estimated bit vector
+
+\newcommand{\sn}{\ensuremath{\eta}} % Element of the noise vector
+\newcommand{\vn}{\ensuremath\boldsymbol{\sn}} % Noise vector
+
+%% Power and SNR
+\newcommand{\Pow}{\ensuremath \mathcal{P}} % Total transmit power constraint
+\newcommand{\ipow}{\ensuremath \MakeUppercase{\sP}} % Instantaneous transmit power
+\newcommand{\mpow}{\ensuremath \overline{\MakeUppercase{\sP}}} % Mean transmit power
+
+\newcommand{\sgn}{\ensuremath\std[\sn]} % Variance of the noise vector elements
+\newcommand{\sgneff}[1][\idxC,\idxA]{\ensuremath\std[\tilde{\sn}_{#1}]} % Variance of the noise vector elements
+
+\newcommand{\cnr}[1][\idxC]{\ensuremath\ifthenelse{\equal{#1}{}}{\gamma_{\text{CNR}}}{\gamma_{\text{CNR},#1}}} % Channel-to-noise-ratio
+\newcommand{\mcnr}[1][\idxC]{\ensuremath\ifthenelse{\equal{#1}{}}{\bar{\gamma}_{\text{CNR}}}{\bar{\gamma}_{\text{CNR},#1}}} % Channel-to-noise-ratio
+\newcommand{\snr}{\ensuremath{\gamma}} % Signal-to-noise-ratio
+\newcommand{\msnr}{\ensuremath\overline{\snr}} % Mean Signal-to-noise-ratio
+\newcommand{\tsnr}{\ensuremath\hat{\gamma}} % SNR Threshold
+
+%% Matrix transforms
+\newcommand{\mU}{\ensuremath \mathbf{U}} % Unitary matrix
+\newcommand{\mS}{\ensuremath \mathbf{S}} % Matrix of singular values
+\newcommand{\mV}{\ensuremath \mathbf{V}} % Unitary matrix
+
+\newcommand{\mQ}{\ensuremath \mathbf{Q}} % Unitary Matrix
+\newcommand{\mL}{\ensuremath \mathbf{L}} % Lower triangular Matrix
+\newcommand{\mR}{\ensuremath \mathbf{R}} % Upper triangular Matrix
+
+\newcommand{\sing}{\ensuremath{s}} % Singular value
+\newcommand{\rankS}{\ensuremath{r}} % rank of the singular value matrix
+\newcommand{\defmS}{\ensuremath \mS = \diag[\sing_1,\dotsc,\sing_{\rankS}]} % Definition of the singular value matrix
+
+% Dimensionality
+\newcommand{\cdimxt}{\ensuremath\domc^{\nT\times 1}} % Dim of the transmit vector (time domain)
+\newcommand{\cdimnt}{\ensuremath\domc^{\nR\times 1}} % Dim of the noise vector (time domain)
+\newcommand{\cdimyt}{\ensuremath\domc^{\nR\times 1}} % Dim of the receive vector (time domain)
+
+\newcommand{\cdimH}{\ensuremath\domc^{\nR\times\nT}} % Dim of the channel matrix (complex domain)
+\newcommand{\cdimx}{\ensuremath\domc^{\nT\times 1}} % Dim of the transmit vector (complex domain)
+\newcommand{\cdimy}{\ensuremath\domc^{\nR\nTst\times 1}} % Dim of the receive vector (complex domain)
+\newcommand{\cdimn}{\ensuremath\domc^{\nR\nTst\times 1}} % Dim of the noise vector (complex domain)
+\newcommand{\cdimd}{\ensuremath\domc^{\nA\times 1}} % Dim of the symbol vector (complex domain)
+\newcommand{\cdimp}{\ensuremath\domc^{\nT\times 1}} % Dim of the power vector (complex domain)
+
+\newcommand{\rdimH}{\ensuremath\domr^{2\nT\times2\nR}} % Dim of the channel matrix (real domain)
+\newcommand{\cdimG}{\ensuremath\domc^{\nT\nTst\times2\nA}} % Dim of the generator matrix (real domain)
+\newcommand{\rdimx}{\ensuremath\domr^{2\nA\times 1}} % Dim of the transmit vector (real domain)
+\newcommand{\rdimy}{\ensuremath\domr^{2\nR\times 1}} % Dim of the receive vector (real domain) 
+\newcommand{\rdimn}{\ensuremath\domr^{2\nR\times 1}} % Dim of the noise vector (real domain)
+\newcommand{\rdimd}{\ensuremath\domr^{2\nT\nTst\times 1}} % Dim of the symbol vector (real domain)
+\newcommand{\rdimp}{\ensuremath\domr^{2\nT\times 1}} % Dim of the power vector (real domain)
+
+\newcommand{\rdimW}{\ensuremath\domr^{2\nA\times\2\nR\nTst}} % Dim of the receive filter matrix (real domain)
+
+\newcommand{\bdimb}{\ensuremath\mathrm{GF}\negthinspace\lpa2\rpa^{\nb\times 1}} % Dim of the power vector (real domain)
+\newcommand{\bdimc}{\ensuremath\mathrm{GF}\negthinspace\lpa2\rpa^{\nc\times 1}} % Dim of the power vector (real domain)
+
+% Derived Symbols
+% continous time 
+\newcommand{\vxot}{\ensuremath\underline{\vx}(\idxT)}
+\newcommand{\sxot}[1][\idxSa]{\ensuremath\underline{\sx}_{#1}(\idxT)}
+\newcommand{\mHot}{\ensuremath\underline{\mH}(\idxT,\idxTau)}
+\newcommand{\sHot}[1][\idxSa,\idxSb]{\ensuremath\underline{\sH}_{#1}(\idxT,\idxTau)}
+\newcommand{\vnot}{\ensuremath\underline{\vn}(\idxT)}
+\newcommand{\vyot}[1][\idxT]{\ensuremath\ushort{\vy}\!\lpa#1\rpa}
+\newcommand{\syot}[1][\idxSb]{\ensuremath\ushort{\sy}_{#1}(\idxT)}
+
+% discrete time
+\newcommand{\vxon}[1][\idxN]{\ensuremath\underline{\vx}(#1)}
+\newcommand{\sxon}[1][\idxSa]{\ensuremath\underline{\sx}(\idxN,#1)}
+\newcommand{\mHon}{\ensuremath\underline{\mH}(\idxN,\idxL)}
+\newcommand{\vnon}{\ensuremath\underline{\vn}(\idxN)}
+\newcommand{\syon}[1][\idxN]{\ensuremath\ushort{\sy}\!\lpa#1\rpa}
+\newcommand{\vyon}[1][\idxN]{\ensuremath\ushort{\vy}\!\lpa#1\rpa}
+
+% complex valued
+\newcommand{\mHwi}[1][\idxC]{\ensuremath\underline{\mH}_{#1}}
+\newcommand{\sHwi}[1]{\ensuremath\underline{\sH}_{#1}}
+\newcommand{\vHwi}[1][\idxC]{\ensuremath\underline{\vH}_{#1}}
+\newcommand{\mGwi}[1][\idxC]{\ensuremath\underline{\mG}_{#1}}
+\newcommand{\mSywi}[1][\idxC]{\ensuremath\ushort{\mSy}_{#1}}
+
+\newcommand{\mHwie}[1][\idxC]{\ensuremath\underline{\mHe}_{#1}}
+\newcommand{\sHwie}[1][\idxC]{\ensuremath\underline{\sHe}_{#1}}
+\newcommand{\vHwie}[1][\idxC]{\ensuremath\underline{\vHe}_{#1}}
+
+\newcommand{\mHwid}[1][\idxC]{\ensuremath\underline{\mHd}_{#1}}
+\newcommand{\sHwid}[1][\idxC]{\ensuremath\underline{\sHd}_{#1}}
+\newcommand{\vHwid}[1][\idxC]{\ensuremath\underline{\vHd}_{#1}}
+
+\newcommand{\sge}[1][]{\ensuremath \ifthenelse{\equal{#1}{}}{\std[\text{e}]}{\std[\text{e},#1]}}
+\newcommand{\corre}[1][]{\ensuremath \ifthenelse{\equal{#1}{}}{\rho_{\text{e}}}{\rho_{\text{e},#1}}}
+
+\newcommand{\mDwi}{\ensuremath\underline{\mD}} 
+\newcommand{\sdwi}[1][]{\ensuremath\underline{\sd}_{#1}} 
+
+\newcommand{\vxwi}[1][\idxC]{\ensuremath\underline{\vx}_{#1}}
+\newcommand{\sxwi}[1][]{\ensuremath\underline{\sx}_{#1}}
+\newcommand{\sgx}[1][]{\ensuremath\std[\underline{\sx}]}
+
+\newcommand{\vdA}{\ensuremath\mathbf{\Delta}_{\eA_{\idxSa,\idxSb}}}
+\newcommand{\defvdA}{\ensuremath\mathbf{\Delta}_{\eA_{\idxSa,\idxSb}} = \sqrt{\sP}\lpa\eA_{\idxSa} - \eA_{\idxSb}\rpa}
+
+\newcommand{\sdxwi}[1][]{\ensuremath\mathbf{\Delta}_{\sxwi[#1]}}
+\newcommand{\defsdxwi}[2][1]{\ensuremath\mathbf{\Delta}_{\sxwi[#1]} = \sqrt{\sP}\lpa\sdwi[#2] - \sdwi[#1]\rpa}
+
+\newcommand{\vdxwi}[1][]{\ensuremath\mathbf{\Delta}_{\vxwi[#1]}}
+\newcommand{\defvdxwi}[2][1]{\ensuremath\mathbf{\Delta}_{\underline{\vx}} = \mP^{1/2}\lpa\vdwi[#2] - \vdwi[#1]\rpa}
+\newcommand{\setDi}{\ensuremath\mathcal{O}} % Set of all difference symbols
+\newcommand{\defDi}{\ensuremath\setDi = \lcb\vdxwi = \mP^{1/2}\lpa\vdwi[\idxSa] - \vdwi[\idxSb]\rpa\,\vert\,\vdwi[\idxSa],\vdwi[\idxSb]\in\setD\,\forall\idxSa,\idxSb\rcb} % Definition of set X
+
+\newcommand{\vywi}[1][\idxC]{\ensuremath\ushort{\vy}_{#1}}
+\newcommand{\sywi}[1][]{\ensuremath\ushort{\sy}_{#1}}
+\newcommand{\sgy}[1][]{\ensuremath\std[\underline{\sy}]}
+
+\newcommand{\vnwi}[1][\idxC]{\ensuremath\underline{\vn}_{#1}}
+\newcommand{\snwi}[1][]{\ensuremath\underline{\sn}_{#1}}
+
+\newcommand{\sgnc}[1][]{\ensuremath\std[\underline{\sn}]}
+\newcommand{\vdwi}[1][\idxC]{\ensuremath\underline{\vd}_{#1}}
+
+% real valued
+\newcommand{\vbwi}[1][]{\ensuremath\vb_{#1}}
+
+\newcommand{\scwi}[1][\idxSa]{\ensuremath\sco_{#1}}
+\newcommand{\vcwi}[1][]{\ensuremath\vc_{#1}}
+
+\newcommand{\mPwi}[1][\idxC]{\ensuremath\mP_{#1}}
+\newcommand{\defmPwi}[1][\idxC]{\ensuremath\mP_{#1} =\diag[\sP_{\idxC,1},\dotsc,\sP_{\idxC,2\nA}]}
+
+\newcommand{\mPrewir}[1][\idxC]{\ensuremath\mPre_{#1}}
+\newcommand{\mtPrewir}[1][\idxC]{\ensuremath\tilde{\mPre}_{#1}}
+\newcommand{\sNormwi}[1][\idxC]{\ensuremath\sNorm_{#1}}
+
+\newcommand{\mRwir}[1][\idxC]{\ensuremath\mR_{#1}}
+\newcommand{\mRwirp}[1][\idxC]{\ensuremath\bar{\mR}_{#1}}
+\newcommand{\mdRwir}[1][\idxC]{\ensuremath\boldsymbol{\Gamma}_{#1}}
+\newcommand{\mLwir}[1][\idxC]{\ensuremath\mL_{#1}}
+\newcommand{\mQwir}[1][\idxC]{\ensuremath\mQ_{#1}}
+
+\newcommand{\mUwir}[1][\idxC]{\ensuremath\mU_{#1}}
+\newcommand{\mSwir}[1][\idxC]{\ensuremath\mS_{#1}}
+\newcommand{\mVwir}[1][\idxC]{\ensuremath\mV_{#1}}
+
+\newcommand{\mUwire}[1][\idxC]{\ensuremath\hat{\mU}_{#1}}
+\newcommand{\mSwire}[1][\idxC]{\ensuremath\hat{\mS}_{#1}}
+\newcommand{\mVwire}[1][\idxC]{\ensuremath\hat{\mV}_{#1}}
+
+\newcommand{\sPrecwir}[1][\idxC,\idxA]{\ensuremath\sPrec_{#1}}
+\newcommand{\vPrecwir}[1][\idxC]{\ensuremath\vPrec_{#1}}
+\newcommand{\mBPrewir}[1][\idxC]{\ensuremath\mBPre_{#1}}
+
+\newcommand{\vxwir}[1][\idxC]{\ensuremath\vx_{#1}}
+\newcommand{\vdwir}[1][\idxC]{\ensuremath\vd_{#1}}
+\newcommand{\sdwir}[1][\idxC,\idxA]{\ensuremath\sd_{#1}}
+
+\newcommand{\sywir}[1][\idxC,\idxA]{\ensuremath\sy_{#1}}
+\newcommand{\vywir}[1][\idxC]{\ensuremath\vy_{#1}}
+
+\newcommand{\snwir}[1][\idxC,\idxA]{\ensuremath\sn_{#1}}
+\newcommand{\vnwir}[1][\idxC]{\ensuremath\vn_{#1}}
+\newcommand{\mSywir}[1][\idxC]{\ensuremath\mSy_{#1}}
+\newcommand{\mSywire}[1][\idxC]{\ensuremath\mSye_{#1}}
+
+\newcommand{\mSywid}[1][\idxC]{\ensuremath{\mHd}_{#1}}
+\newcommand{\sSywid}[1][\idxC]{\ensuremath{\sHd}_{#1}}
+\newcommand{\vSywid}[1][\idxC]{\ensuremath{\vHd}_{#1}}
+
+\newcommand{\mWwir}[1][\idxC]{\ensuremath\mW_{#1}}
+\newcommand{\szwir}[1][\idxC,\idxA]{\ensuremath\sz_{#1}}
+\newcommand{\vzwir}[1][\idxC]{\ensuremath\vz_{#1}}
+
+% effective system model
+\newcommand{\sneff}[1][\idxC,\idxA]{\ensuremath\tilde{\sn}_{#1}}
+\newcommand{\vneff}[1][\idxC]{\ensuremath\tilde{\vn}_{#1}}
+
+% Hypothesis and estimated values
+\newcommand{\sdwih}[1][\idxC,\idxA]{\ensuremath\tilde{\sd}_{#1}}
+\newcommand{\vdwih}[1][\idxC]{\ensuremath\tilde{\vd}_{#1}}
+
+\newcommand{\sdwim}[1][\idxC,\idxA]{\ensuremath\bar{\sd}_{#1}} % mean estimated vector
+\newcommand{\ssgm}[1][\idxC,\idxA]{\ensuremath\std[#1]} % mean estimated vector
+
+\newcommand{\scwih}[1][\idxSa]{\ensuremath\tilde{\sco}_{#1}} % hypothesis code bit
+
+\newcommand{\sdwie}[1][\idxC,\idxA]{\ensuremath\hat{\sd}_{#1}}
+\newcommand{\vdwie}[1][\idxC]{\ensuremath\hat{\vd}_{#1}}
+
+\newcommand{\scwie}[1][\idxSa]{\ensuremath\hat{\sco}_{#1}} % Estimated code bit
+\newcommand{\vcwie}[1][]{\ensuremath\hat{\vc}_{#1}} % Estimated code bit vector
+
+\newcommand{\vbewi}[1][]{\ensuremath\vbe_{#1}}
+
+%%% Local Variables: 
+%%% mode: plain-tex
+%%% TeX-master: "../diss"
+%%% End: 

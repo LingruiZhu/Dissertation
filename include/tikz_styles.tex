@@ -1,0 +1,178 @@
+%% Define your own pgfplot and tikz default styles
+% This file defines TikZ styles and options for exams! It is also used be the ant_exam class!
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{arrows,arrows.meta,automata,backgrounds,calc,shapes.misc,shapes.symbols,shapes.geometric,decorations.markings,decorations.pathmorphing,decorations.shapes,matrix,positioning,shadows,svg.path,plotmarks,spy,pgfplots.groupplots,fit,patterns}
+\pgfplotsset{compat=newest}
+
+\tikzstyle{line} = [draw, -latex']
+\tikzset{
+	conn/.style={circle, fill=black, inner sep=.1pt, draw, minimum height = 1mm},
+	box/.style={rectangle, fill=white, inner sep=7pt, very thick, draw, drop shadow={fill=white, xshift=0mm, yshift=-0mm}},
+	kreis/.style={circle, fill=white, inner sep=7pt, very thick, draw,drop shadow={fill=white, xshift=0mm, yshift=-0mm}},
+	se/.style={-stealth, thick},
+	plus/.style={oplus,circle, fill=white, inner sep=.5pt, thick, draw, minimum height=3.5mm},
+	times/.style={otimes,circle, inner sep=.5pt, thick, draw, minimum height=3.5mm},
+	oplus/.style={path picture={\draw[black](path picture bounding box.south) -- (path picture bounding box.north) (path picture bounding box.west) -- (path picture bounding box.east);}},
+	otimes/.style={path picture={\draw[black](path picture bounding box.south west) -- (path picture bounding box.north east) (path picture bounding box.south east) -- (path picture bounding box.north west);}},
+	antenna/.style={isosceles triangle,fill=black,shape border rotate=-90, inner sep=2pt},
+  	invisible/.style={opacity=0},
+  	visible on/.style={alt=#1{}{invisible}},
+  	alt/.code args={<#1>#2#3}{%
+    	\alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+  	},
+	}
+
+\tikzstyle{pluscircle} = [draw, circle, path picture={\draw (path picture bounding box.south) -- (path picture bounding box.north) (path picture bounding box.west) -- (path picture bounding box.east);}]
+
+\tikzstyle{block} = [draw, rectangle, minimum height=2em, minimum width=4em, align=center, inner sep=2pt]
+\tikzstyle{backgroundblock} = [minimum height=2em, minimum width=6em, align=center,fill=gray!30, inner sep=4pt]
+
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+
+
+% Define the ORCID LOGO
+\usepackage{scalerel}
+\usetikzlibrary{svg.path}
+\definecolor{orcidlogocol}{HTML}{A6CE39}
+\tikzset{
+	orcidlogo/.pic={
+		\fill[orcidlogocol] svg{M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z};
+		\fill[white] svg{M86.3,186.2H70.9V79.1h15.4v48.4V186.2z}
+		svg{M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z M124.3,172.4h24.5c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z}
+		svg{M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1C84.2,46.7,88.7,51.3,88.7,56.8z};
+	}
+}
+
+\newcommand\orcidicon[1]{\href{https://orcid.org/#1}{\mbox{\scalerel*{
+				\begin{tikzpicture}[yscale=-1,transform shape]
+				\pic{orcidlogo};
+				\end{tikzpicture}
+			}{U}}}} % original: |
+
+% Official colors of the University of Bremen
+\definecolor{UBBlueDark}{RGB}{28,53,107}
+\definecolor{UBBlueMed}{RGB}{13,104,176}
+\definecolor{UBBlueVeryLight}{RGB}{192,209,226} % this one's not official
+\definecolor{UBBlueLight}{RGB}{114,179,223}
+\definecolor{UBOrangeDark}{RGB}{247,167,3}
+\definecolor{UBOrangeLight}{RGB}{255,232,177}
+\definecolor{UBRedMed}{RGB}{213,17,48}
+\definecolor{UBRedDark}{RGB}{135,39,70}
+
+%%%%
+% Carsten Style
+%%%%
+% A custom phantom function to manipulate the position of exponents in
+% tikz plots
+\def\myphantom#1#2{
+  \setbox0 = \hbox{$#1$}
+  \hbox to #2\wd0{\hfill}
+}
+
+% Insert tikz package for pictures and define library packages
+\usetikzlibrary{arrows,calc,shapes.geometric,decorations.markings,decorations.pathmorphing,decorations.shapes,matrix,positioning,shadows,plotmarks,spy,pgfplots.groupplots,fit,patterns}
+\pgfplotsset{compat=newest}
+
+% Custom definitions to tweak standard plot formatting, plot groups
+% and so on
+\pgfplotsset{
+  plot coordinates/math parser=false,
+  log base 10 number format code/.code={$\displaystyle\ifthenelse{\equal{#1}{0.0}}{10^{\scriptscriptstyle\myphantom{\scriptscriptstyle-}{.3}\pgfmathprintnumber{#1}}\myphantom{\scriptscriptstyle-}{.7}}{10^{\scriptscriptstyle\pgfmathprintnumber{#1}}}$},
+  every axis y label/.style={at={(ticklabel cs:0.5)},rotate=90,left=1mm,anchor=center},
+  every axis x label/.style={at={(ticklabel cs:0.5)},below=1mm,anchor=center},
+  every axis/.append style={
+      footnotesize,
+      width = 0.5\textwidth,
+      legend style={font=\scriptsize,legend cell align = left,legend pos =north west},
+      tick style={semithick},
+  },
+  every axis plot/.append style={thick},
+  group style={
+      columns= 2,
+      horizontal sep=1.15cm,
+      every plot/.style= {width=0.53\textwidth},
+  },
+  filter discard warning=false,
+}
+
+% Custom styles for block diagrams, especially times, plus,
+% modulations in a node, etc.
+\tikzset{
+	common/.style={font=\small},
+	box/.style={rectangle, fill=white, inner sep=7pt, very thick, draw,drop shadow={fill=black, xshift=1mm, yshift=-1mm}},
+	vbox/.style={box,rotate=90,text centered},
+	conn/.style={circle, fill=black, inner sep=.1pt, draw, minimum height = 1mm},
+	oplus/.style={
+          path picture={
+            \draw[black](path picture bounding box.south) -- (path picture bounding box.north)
+            (path picture bounding box.west) -- (path picture bounding box.east);
+          }
+        },
+	otimes/.style={
+          path picture={
+            \draw[black](path picture bounding box.south west) -- (path picture bounding box.north east)
+            (path picture bounding box.south east) -- (path picture
+            bounding box.north west);
+          }
+        },
+	4qam/.style={box,minimum height=8mm,minimum width=8mm,
+          path picture={
+            \draw[black,thin,-stealth](0,-3.1mm) -- (0,3.5mm);
+            \draw[black,thin,-stealth] (-3.1mm,0) -- (3.5mm,0);
+            \foreach \x in {-1.414213562373095mm,1.414213562373095mm} {
+              \foreach \y in {-1.414213562373095mm,1.414213562373095mm} {
+                \draw[fill=black,thin] (\x,\y) circle
+                [radius=.1mm];
+              }
+            }
+          }
+        },
+	16qam/.style={box,minimum height=8mm,minimum width=8mm,
+          path picture={
+            \draw[black,thin,-stealth](0,-3.1mm) -- (0,3.5mm);
+            \draw[black,thin,-stealth] (-3.1mm,0) -- (3.5mm,0);
+            \foreach \x in {-0.632455532033676mm,0.632455532033676mm,-1.897366596101028mm,1.897366596101028mm}{
+              \foreach \y in {-0.632455532033676mm,0.632455532033676mm,-1.897366596101028mm,1.897366596101028mm}
+              {
+                \draw[fill=black,thin] (\x,\y) circle
+                [radius=.1mm];
+              }
+            }
+          }
+        },
+	64qam/.style={box,minimum height=8mm,minimum width=8mm,
+          path picture={
+            \draw[black,thin,-stealth](0,-3.1mm) -- (0,3.5mm);
+            \draw[black,thin,-stealth] (-3.1mm,0) -- (3.5mm,0);
+            \foreach \x in {-0.308606699924184mm,0.308606699924184mm,-0.925820099772551mm,0.925820099772551mm,-1.543033499620919mm,1.543033499620919mm,-2.160246899469286mm,2.160246899469286mm}{
+              \foreach \y in {-0.308606699924184mm,0.308606699924184mm,-0.925820099772551mm,0.925820099772551mm,-1.543033499620919mm,1.543033499620919mm,-2.160246899469286mm,2.160246899469286mm}
+              {
+                \draw[fill=black,thin] (\x,\y) circle [radius=.1mm];
+              }
+            }
+          }
+        },
+	plus/.style={oplus,circle, fill=white, inner sep=.5pt, thick, draw, minimum height=3.5mm},
+	times/.style={otimes,circle, inner sep=.5pt, thick, draw, minimum height=3.5mm},
+	antenna/.style={isosceles triangle,fill=black, shape border rotate=-90, inner sep=2pt},
+	se/.style={-stealth, thick},
+	pa/.style={-stealth,thick,double distance between line centers=2pt,
+          decoration={markings,mark=at position .4 with {
+              \draw (-2pt,-2pt) -- (2pt,2pt);\draw (0pt,-2pt) -- (4pt,2pt);
+            }
+          }
+        },
+	dots/.style={dash pattern=on 1pt off 4pt,very thick},
+	wave/.style={-stealth,decorate,
+          decoration={coil,aspect=0,amplitude=.2mm,segment length=1mm,pre=lineto,pre length=1mm,post=lineto, post length=1mm}
+        },
+	exit_inner/.style={color=black,solid},
+	exit_combine/.style={color=black,dash pattern=on 1.5pt off 3pt on 1.5pt off 3pt, line width=1.5pt},
+	exit_outer_bg/.style={color=white!50!black!50,dashed},
+	exit_outer/.style={color=black,dashed},
+}
+% Declaration of layers in pgf pictures, e.g., to draw something
+% behind a picture (also useful for beamer)
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}

@@ -1,0 +1,372 @@
+% !TeX document-id = {ca41679b-2721-473b-bbe9-aab1919c455e}
+% --------------------------------------------------------------------
+%
+%              Dissertation von Lingrui Zhu
+%  Titel:      Machine Learning aided Acquistion, Feedback and Utilization of Channel State Information for Wireless Communication
+%
+%
+% --------------------------------------------------------------------
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Toplevel-File  : dissertation.tex
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\pdfmajorversion=2
+\pdfminorversion=7  % sets pdf version to 1.7, on which PDF/A-2 and PDF/A-3 are based
+% Silence these warnings - intentionally
+\RequirePackage{silence}
+\WarningFilter{latex}{Writing or overwriting file}
+\WarningFilter{glossaries}{Deprecated command}
+% Enable PDF/A meta data stuff. Needs to be here at the top.
+\begin{filecontents*}[overwrite]{\jobname.xmpdata}
+    \Title{The title meta data that one sees in the PDFA}
+    \Author{Author name}
+    \Language{en-US}
+    \Subject{Preferably your thesis abstract}
+    \Keywords{5G\sep URLLC\sep Industrie 4.0\sep Industrial Radio\sep SDR\sep Software\sep Reliability\sep Latency}
+\end{filecontents*}
+
+\documentclass[10pt,a5paper,twoside,pdftex,dvipsnames]{book}
+%
+% Define base commands for title page and PDF properties
+%
+\newcommand{\Arbeitsart}{Dissertation \\ zur Erlangung des akademischen Grades \\
+            {\em Doktor der Ingenieurwissenschaften (Dr.-Ing.)}}
+\newcommand{\Autor}{M. Sc. Lingrui Zhu}
+\newcommand{\Berichtstitel}{Machine Learning Aided Acquistion, Feedback and Utilization of Channel State Information for Wireless Communication}
+%
+% Load packages -> this order worked, change at own risk!
+%
+\usepackage[english]{babel}               % Language selection
+\usepackage[utf8]{inputenc}               % Ensure correct input handling
+\usepackage[T1]{fontenc}                  % Specifies font encoding
+\usepackage{lmodern}                      % Modern latin vector fonts
+\usepackage{amsmath,amsfonts,amssymb,bm}  % Typical math packages
+\usepackage{ushort}                       % Short underline, e.g., to use with y
+\usepackage{fancyhdr}                     % Advanced header formatting
+\usepackage{float}                        % Enhanced float control
+\usepackage[chapter]{algorithm}           %
+\usepackage{algorithmic}                  % Algorithm environments and floats
+\usepackage{eqparbox}                     % Fixed size box for algorithm tweaking
+\usepackage{siunitx}                      % Units definition, also for numbers
+\DeclareSIUnit{\sample}{S}                % Example definition
+\usepackage{makecell}                     % Common layouts for tabular column heads, multi-lined tabular cells
+\usepackage{listings}                     % Typeset programming code, e.g., Python
+\usepackage{dirtytalk}                    % Easy quotes with /say{}
+\usepackage{scrextend}                    % Page layout based on established typographic standards
+%\usepackage{layouts}                     % Display information of a document's layout
+\usepackage[normalem]{ulem}               % Improved underlining
+\usepackage[table]{xcolor}                % Enable colored cells in tables
+
+%% PDF/A compliance (see https://webpages.tuni.fi/latex/pdfa-guide.pdf)
+% Note: Check compliance with veraPDF in the end
+\usepackage{colorprofiles}
+\usepackage[a-2b,mathxmp]{pdfx}[2018/12/22] % includes hyperref and xcolor among other packages
+% Options such as : `pdfpagelabels,backref=page` do not work with PDF/A
+% Commented out data is already included in PDF/A preamble. No need to to it twice. Will only break conformance.
+\hypersetup{
+                 % pdftitle={blah blah},
+                 % pdfauthor={\Autor},
+                 % pdflang={en-US},
+                 % pdfcreator = {pdfLaTeX with hyperref},
+                 % pdfsubject={Doktorarbeit an der Uni Bremen},
+                 % pdfkeywords = {MIMO, Adaptivity, OFDM, Multiuser},
+                 colorlinks=false, % links have no specific color -> may be bad for online versions
+                 linkcolor=red,
+                 anchorcolor=black,
+                 citecolor=red,
+                 filecolor=magenta,
+                 menucolor=red,
+                 urlcolor=cyan,
+                 urlbordercolor=0 0 0,
+                 pdfborder=0 0 0,
+                 pdffitwindow=true,
+                 pdfstartpage = 1,
+                 pdfstartview=Fit,
+                 pdfpagelayout=TwoColumnRight,
+                 pdfpagemode=UseOutlines,
+                 bookmarksopen = true,
+                 bookmarksnumbered = true
+                 }
+
+%
+\usepackage{graphicx}                 % Advanced graphics inclusion
+\graphicspath{{images/}{images/demo}{schematics/}{schematics/implementation}} % Set the graphicspath
+\usepackage{svg}                      % SVG support, requires Inkscape
+\svgpath{{images/}}                   % Set svg path
+\usepackage{tcolorbox}                % Colored and frame text boxes
+\usepackage{tikz}                     % Tikz and PGFplots for cool pics :)
+\usepackage{pgfplots}
+% https://tex.stackexchange.com/questions/7953/how-to-expand-texs-main-memory-size-pgfplots-memory-overload
+\usetikzlibrary{pgfplots.external}    % Externalize tikz-pictures to pdfs
+\tikzexternalize[prefix=TikZexternal/]% Externalization path
+
+\usepackage[hang,small,bf]{caption}   % Advanced Caption formatting
+\usepackage{subcaption}
+% Glossary package for index, acronyms and symbol list -> <=v4.49 necessary for compatibility, reprogramming neccesary for >=v4.50 !!!
+% Run pdflatex -> biber -> makeglossaries -> 2 * pdflatex for the glossaries to be included, makeglossaries requires perl
+\usepackage[toc, acronym, shortcuts, nomain]{glossaries}[=v4.49]
+
+\usepackage{todonotes}                % Nifty todo notes
+\usepackage{longtable, booktabs}      % Tabellen ueber mehr als eine Seite
+\usepackage{multirow}                 % Text in multiple rows
+\usepackage{rotfloat}                 % Rotate floats
+\usepackage[babel]{microtype}         % Enhanced Type-Setting
+
+% Advanced bibliographies
+% !BIB TS-program = biber
+\usepackage[backend=biber, style=ieee-alphabetic, maxbibnames=99, maxcitenames = 10, doi=true, url=false, isbn=false, giveninits = true, dateabbrev=true, abbreviate=true, useprefix=true]{biblatex}
+\usepackage{csquotes}
+%\usepackage{showkeys}                % Look for duplicate entries
+\AtBeginBibliography{\small}          % Small fontsize for references
+\defbibheading{subbibliography}{      % Make heading lowercase
+  \section*{#1}%
+  \addcontentsline{toc}{section}{#1}%
+  \markboth{#1}{#1}%
+}
+\renewcommand*{\labelalphaothers}{\textsuperscript{+}} % Change +-sign to thesis default
+% Add bibliographies here
+\addbibresource{include/IEEEfull.bib} % add IEEE journal names/abbreviations
+%\addbibresource{include/IEEEabrv.bib}
+\addbibresource{include/bibliography.bib}
+% Clear "visited on" for all entries
+\AtEveryBibitem{
+    \clearfield{urlyear}
+    \clearfield{urlmonth}
+}
+% IEEE style fix for full month names and to fix volume abbreviation according to PhD thesis convention
+%\DefineBibliographyStrings{english}{
+  %june      = June,
+  %july      = July,
+  %september = September, % orig english.lbx has Sept\adddot; IEEE is Sep\adddot
+  %jourvol = volume,
+%}
+
+
+% Fine tuning the algorithm style
+\algsetup{indent=2em}
+
+% Ensure equally indented comments dynamically fit to the longest comment
+\renewcommand{\algorithmiccomment}[1]{\hfill\eqparbox{COMMENT}{\# #1}}
+
+%
+%%%%%%%%%%%%%% Shorthands and math definitions%%%%%%%%%%%%%%%
+\input{include/definitions}
+%
+%%%%%%%%%%%%%% Page style and headers %%%%%%%%%%%%%%%
+\pagestyle{fancyplain}
+% 148 × 210
+\setlength{\textwidth}{11.5cm}
+\setlength{\textheight}{17.5cm}
+\setlength{\headheight}{3ex}
+\setlength{\topmargin}{-12.275mm}
+\addtolength{\topmargin}{-3ex}
+\setlength{\evensidemargin}{-3.4mm}
+\setlength{\oddsidemargin}{-14.4mm}
+%
+\addtolength{\headwidth}{\marginparsep}
+\setlength{\headwidth}{11.5cm}
+%
+% Base Header definition
+\renewcommand{\chaptermark}[1]
+               {\markboth{ #1}{}}
+\renewcommand{\sectionmark}[1]
+               {\markright{\thesection\ #1}}
+\lhead[\fancyplain{}{\thepage}]%
+      {\fancyplain{}{\footnotesize\rightmark}}
+\rhead[\fancyplain{}{\footnotesize\leftmark}]%
+      {\fancyplain{}{\thepage}}
+\cfoot{}
+%
+%########################################################################
+%########### New TeX commands and Custom Stuff ##########################
+%########################################################################
+% Definition of the german date
+%
+\makeatletter
+\def\dategerman{\def\today{\month@german
+    \space\number\year}}
+\makeatother
+%
+% Phantom Section for formatting
+\providecommand*{\phantomsection}{}
+%
+% A robust uppercase function to convert the first letter of every
+% word in a sentence to upper case -> Glossary
+%
+\makeatletter
+\newcommand*{\myMakeUpperCase}{}
+\DeclareRobustCommand\myMakeUpperCase[1]{%
+  \def\@myuppercasewords{\myuppercase@i#1 \@nil}%
+ {\@myuppercasewords}%
+}%
+\def\myuppercase@i#1 #2\@nil{%
+  \xmakefirstuc{#1}%
+  \ifx\\#2\\%
+  \else
+    \@ReturnAfterFi{%
+      \space
+      \myuppercase@i#2\@nil
+    }%
+  \fi}%
+\long\def\@ReturnAfterFi#1\fi{\fi#1}%
+\makeatother
+
+% ##########  Load tikZ and define styles  ##########
+\input{include/tikz_styles}
+
+% ##########  Style for floating objects  ###########
+\setcounter{bottomnumber}{2} % default 1
+\renewcommand{\bottomfraction}{.5} % default .3
+%
+% ########## List of Symbols and Index  ###########
+\newglossary{symbols}{sim}{sym}{List of Symbols}
+\newglossary{index}{ind}{idx}{Index}
+\makeglossaries
+
+% ######### Custom glossary styles ##############
+% TODO: Requires update beyond glossaries package <= 4.49
+% Deprecated command \glossarystyle
+\input{include/glossary_styles}
+
+% ########## todo notes definitions ##########
+
+% Resolve incompatibility of tikzexternalize with todonotes [todonotes are drawn with tikz]
+\usepackage{letltxmacro}
+\LetLtxMacro{\oldmissingfigure}{\missingfigure}
+\renewcommand{\missingfigure}[2][]{\tikzexternaldisable\oldmissingfigure[{#1}]{#2}\tikzexternalenable}
+\LetLtxMacro{\oldtodo}{\todo}
+\renewcommand{\todo}[2][]{\tikzexternaldisable\oldtodo[#1]{#2}\tikzexternalenable}
+
+% Custom commands for todo notes to distinguish different tasks
+\newcommand{\addref}{\todo[color=red!40]{Add reference.}}
+\newcommand{\rewrite}[2][]{\todo[color=green!40,#1]{#2}}
+
+% ######### Workarounds/Fixes ###############
+
+% This is a workaround to include matplotlib figures with integrated images.
+% https://tex.stackexchange.com/a/600827
+\newcommand\inputpgf[2]{{
+        \let\pgfimageWithoutPath\pgfimage
+        \renewcommand{\pgfimage}[2][]{\pgfimageWithoutPath[##1]{#1/##2}}
+        \let\includegraphicsWithoutPath\includegraphics
+        \renewcommand{\includegraphics}[2][]{\includegraphicsWithoutPath[##1]{#1/##2}}
+        \input{#1/#2}
+}}
+
+% Math minus sign unicode char not defined
+\DeclareUnicodeCharacter{2212}{-}
+
+
+% ########## Page Layout Penalties #########
+\widowpenalty=500
+\clubpenalty=500
+
+% ##########  Paragraph indentation  ###########
+\parindent1em
+\parskip0pt
+
+% ########## Glossary entries ########
+\loadglsentries{include/glossary}
+
+\begin{document}
+%################## Figure and Table Names #####################
+\renewcommand{\figurename}{{\small {\bf Figure}}}
+\renewcommand{\tablename}{{\small {\bf Table}}}
+%
+\sloppy
+\frontmatter
+\pagenumbering{Roman}
+\renewcommand{\arraystretch}{1,0}
+\include{include/titlepage}
+\renewcommand{\arraystretch}{1,5}
+\renewcommand{\chaptermark}[1]
+{\markboth{\thechapter\ #1}{}}
+\cleardoublepage
+%% The thank you part
+%% Preface not in table of contents with \chapter* (default)
+\input{chapters/preface}
+\cleardoublepage
+\rhead[\fancyplain{}{\footnotesize Table of Contents}]%
+{\fancyplain{}{\thepage}}
+\lhead[\fancyplain{}{\thepage}]%
+{\fancyplain{}{\footnotesize Table of Contents}}
+
+\tableofcontents
+\mainmatter
+%
+% -------------- Original header----------------
+%
+\lhead[\fancyplain{}{\thepage}]%
+{\fancyplain{}{\footnotesize\rightmark}}
+\rhead[\fancyplain{}{\footnotesize\leftmark}]%
+{\fancyplain{}{\thepage}}
+% -------------------
+%
+%
+% ------------ Real text HERE ---------------
+%
+\input{chapters/introduction}
+% System model
+% \input{chapters/chapter1}
+% % Information Theory
+\input{chapters/chapter2}
+% SISO chapter
+\input{chapters/chapter3}%
+% MIMO chapter
+\input{chapters/chapter4}
+% Multi-User chapter
+% \input{chapters/chapter5}
+% % Summary
+\input{chapters/summary}
+% Appendix
+\lhead[\fancyplain{}{\thepage}]%
+{\fancyplain{}{\footnotesize Appendix \rightmark}}
+\rhead[\fancyplain{}{\footnotesize Appendix \leftmark}]%
+{\fancyplain{}{\thepage}}
+
+\input{chapters/appendix}
+% ----------------------------------------------------------------------
+\backmatter
+\clearpage
+%
+% --------------- Glossaries ----------------
+%
+\lhead[\fancyplain{}{\thepage}]%
+{\fancyplain{}{\footnotesize\rightmark}}
+\rhead[\fancyplain{}{\footnotesize\leftmark}]%
+{\fancyplain{}{\thepage}}
+% Add all entries of different glossary types for test purposes... Remove next line for final version
+\glsaddall[types={\acronymtype,symbols,index}]
+{\small
+  \printglossary[type=\acronymtype,style=mylist]
+  \printglossary[type=symbols,style=symbolidx]}
+%
+% -------------- Bibliography ---------------
+%
+% TODO: To be removed, backwards compatibility for bibtex
+% \bibliographystyle{include/bibliography_style}
+% All bib entries for test purposes.... Remove next line for final version
+\nocite{*}
+%
+\lhead[\fancyplain{}{\thepage}]%
+{\fancyplain{}{\footnotesize Bibliography}}
+\rhead[\fancyplain{}{\footnotesize Bibliography}]%
+{\fancyplain{}{\thepage}}
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+{\small
+  % TODO: To be removed, backwards compatibility for bibtex
+  % \bibliography{include/bibliography}
+  \printbibliography
+}
+%
+% ----------------- Index -------------------
+%
+\renewcommand{\glspostdescription}{}
+{\small\twocolumn \printglossary[type=index,style=myidx]}
+\end{document}

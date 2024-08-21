@@ -1,0 +1,50 @@
+% #########  Erste Seite zum Kopieren auf die vordere Umschlagseite:  ########
+% #########  Zweite Seite = Erste Seite im Bericht:  ########
+\thispagestyle{empty}
+\vfill
+\begin{LARGE}
+  \centerline{%
+  \begin{bf}
+    \begin{tabular}{c}
+      \parbox{\dimexpr\linewidth-0\fboxsep}{\centering
+        \Berichtstitel
+      }
+    \end{tabular}
+  \end{bf}
+  } % End of \centerline
+\end{LARGE}
+\vspace*{1cm}
+\begin{center}
+    % TODO: English or German title page ???
+    {\Large Dissertation} \\[1ex] zur Erlangung des akademischen Grades \\[1ex]
+            {\em Doktor der Ingenieurwissenschaften (Dr.-Ing.)} \\[1ex]
+    vorgelegt dem Fachbereich 1 (Physik/Elektrotechnik)\\[1ex]
+    der Universit{\"a}t Bremen\\
+      \vspace*{0,8cm}
+
+    von   \vspace*{0,8cm}\\
+    {\large \Autor}\\
+  \vspace*{1,6cm}
+  \begin{tabular}{ll}
+Eingereicht am:                   & -tbd-\\
+Tag des öffentlichen Kolloquiums: & -tbd-\\
+Gutachter der Dissertation:       &  Prof.~Dr.-Ing.~Armin~Dekorsy\\
+                                  &  Prof.~Dr.-Ing.~Examiner~Secunda \\
+Weitere Prüfer:                   &  Prof.~Dr.-Ing.~Gut~Achter \\
+                                  &  Prof.~Dr.-Ing.~Achter~Guter \\
+
+\end{tabular}
+  \vspace*{1cm}
+
+  \pgfimage[width=3.87cm]{logos/UniHB_logo_2021}
+  \vfill
+
+  Bremen, \today
+
+\end{center}
+\vfill
+\newpage
+\thispagestyle{empty}
+ \phantom{x}
+\newpage
+% EOF

@@ -1,0 +1,47 @@
+% Custom glossary style to ensure upper case letters for acronyms in
+% the list if lower case versions are used in the text
+
+% TODO: Requires update beyond glossaries package <= 4.49
+% Deprecated command \glossarystyle
+
+\newglossarystyle{mylist}{
+  \glossarystyle{list}%
+  \renewcommand*{\glossaryentryfield}[5]{\item[\glstarget{##1}{##2}] \myMakeUpperCase{##3}\glspostdescription\space}%
+  \renewcommand*{\glossarysubentryfield}[6]{\glstarget{##2}{\strut}##4\glspostdescription\space}%
+}
+
+% Custom style for the symbol list to control the dotted line
+\newglossarystyle{symbolidx}{%
+  \glossarystyle{sublistdotted}% base this style on the list style
+  \setlength{\glslistdottedwidth}{8em}
+}
+
+% Custom index style to control formatting
+\newglossarystyle{myidx}{
+  \glossarystyle{index}%
+  \renewcommand*{\glossaryentryfield}[5]{%
+  \item\glstarget{##1}{##2}%
+    \ifx\relax##4\relax
+    \else
+    \space(##4)%
+    \fi
+    \space ##3\glspostdescription \space ##5}%
+
+  \renewcommand*{\glossarysubentryfield}[6]{%
+    \ifcase##1\relax
+    % level 0
+    \item
+    \or
+    % level 1
+    \subitem
+    \else
+    % all other levels
+    \subsubitem
+    \fi
+    \glstarget{##2}{##3}%
+    \ifx\relax##5\relax
+    \else
+    \space(##5)%
+    \fi
+    \space##4\glspostdescription\space ##6}%
+}
